@@ -1,6 +1,6 @@
 {
   "name": "@jhnnsrs/rekuest",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "license": "MIT",
   "scripts": {
     "dev": "vite",
@@ -13,15 +13,8 @@
   "files": [
     "dist"
   ],
-  "main": "./dist/rekuest.umd.js",
   "module": "./dist/rekuest.mjs",
   "types": "./dist/index.d.ts",
-  "exports": {
-    ".": {
-      "import": "./dist/rekuest.mjs",
-      "require": "./dist/rekuest.umd.js"
-    }
-  },
   "dependencies": {
     "subscriptions-transport-ws": "^0.11.0"
   },
