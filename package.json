@@ -1,6 +1,6 @@
 {
   "name": "@jhnnsrs/rekuest",
-  "version": "0.0.13",
+  "version": "0.0.14",
   "license": "MIT",
   "scripts": {
     "dev": "vite",
@@ -16,6 +16,7 @@
   "module": "./dist/rekuest.mjs",
   "types": "./dist/index.d.ts",
   "dependencies": {
+    "handlebars": "^4.7.8",
     "subscriptions-transport-ws": "^0.11.0",
     "yup": "^1.2.0"
   },
