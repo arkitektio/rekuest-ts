@@ -1,13 +1,13 @@
 import { beforeEach, describe, expect, test } from "vitest";
 import { render, screen } from "@testing-library/react";
-import { FaktsProvider } from "fakts";
-import { HerreProvider } from "../src/herre/HerreProvider";
+import { FaktsProvider } from "@jhnnsrs/fakts";
+import { HerreProvider } from "@jhnnsrs/herre";
 import React from "react";
 
 describe("Fakts Provider test", () => {
   test("Should be initialized", () => {
     render(
-      <FaktsProvider clientId="fff" clientSecret="soinsoin">
+      <FaktsProvider>
         <h4>Content</h4>
       </FaktsProvider>
     );
@@ -19,14 +19,7 @@ describe("Fakts Provider test", () => {
 describe("Fakts Provider test", () => {
   test("Should be initialized", () => {
     render(
-      <HerreProvider
-        clientId="fff"
-        clientSecret="soinsoin"
-        tokenUrl="oin"
-        authUrl="ff"
-        userInfoUrl="ff"
-        redirectUri="sss"
-      >
+      <HerreProvider>
         <h4>Content</h4>
       </HerreProvider>
     );

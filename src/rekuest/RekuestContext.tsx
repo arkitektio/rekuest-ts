@@ -1,12 +1,6 @@
-import { RekuestClient, RekuestConfig } from "./types";
+import { RekuestClient, RekuestConfig, RekuestContextType } from "./types";
 import React, { useContext } from "react";
 import { useQuery } from "@apollo/client";
-
-export type RekuestContextType = {
-  client?: RekuestClient;
-  configure: (config: RekuestConfig) => void;
-  config?: RekuestConfig;
-};
 
 export const RekuestContext = React.createContext<RekuestContextType>({
   configure: () => {

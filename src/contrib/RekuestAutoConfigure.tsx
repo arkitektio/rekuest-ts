@@ -4,7 +4,7 @@ import { useHerre } from "@jhnnsrs/herre";
 import result from "../api/lok/fragments";
 import { useRekuest } from "../rekuest";
 
-export const MikroAutoConfigure: React.FC<{}> = (props) => {
+export const RekuestAutoConfigure: React.FC<{}> = (props) => {
   const { configure } = useRekuest();
   const { token } = useHerre();
   const { fakts } = useFakts();

@@ -1,21 +1,36 @@
 import { useState } from "react";
 import "./App.css";
-import { FaktsProvider, FaktsGuard, useFakts } from "@jhnnsrs/fakts";
+import {
+  FaktsProvider,
+  FaktsGuard,
+  useFakts,
+  WellKnownDiscovery,
+} from "@jhnnsrs/fakts";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { Callback } from "./contrib/Callback";
-import { NoFakts } from "./NoFakts";
 import { NoHerre } from "./NoHerre";
 import { HerreGuard, HerreProvider, useHerre } from "@jhnnsrs/herre";
 import { RekuestGuard, RekuestProvider, withRekuest } from "./rekuest";
-import { MikroAutoConfigure } from "./contrib/MikroAutoConfigure";
-import { NoMikro } from "./NoMikro";
+import { RekuestAutoConfigure } from "./contrib/RekuestAutoConfigure";
+import { NoRekuest } from "./NoRekuest";
+import { FaktsLogin } from "./contrib/FaktsLogin";
+import { PostmanProvider } from "./rekuest/postman/PostmanProvider";
+import { TestNode } from "./contrib/TestNode";
+import { WidgetRegistry } from "./rekuest/widgets/Registry";
+import { WidgetRegistryProvider } from "./rekuest/widgets/WidgetsProvider";
 
 export const ProtectedApp = () => {
   return (
     <HerreGuard fallback={<NoHerre />}>
       <RekuestProvider>
-        <MikroAutoConfigure />
-        <RekuestGuard fallback={<NoMikro />}>Hallo</RekuestGuard>
+        <WidgetRegistryProvider>
+          <PostmanProvider>
+            <RekuestAutoConfigure />
+            <RekuestGuard fallback={<NoRekuest />}>
+              <TestNode />
+            </RekuestGuard>
+          </PostmanProvider>
+        </WidgetRegistryProvider>
       </RekuestProvider>
     </HerreGuard>
   );
@@ -24,15 +39,11 @@ export const ProtectedApp = () => {
 function App() {
   const [count, setCount] = useState(0);
 
-  const doRedirect = (url: string) => {
-    console.log("Redirecting to", url);
-    window.location.replace(url);
-  };
-
   return (
     <div className="App">
       <FaktsProvider>
-        <FaktsGuard fallback={<NoFakts />}>
+        <WellKnownDiscovery endpoints={["http://100.91.169.37:8000"]} />
+        <FaktsGuard fallback={<FaktsLogin />}>
           <HerreProvider>
             <Router>
               <Routes>

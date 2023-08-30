@@ -2,7 +2,7 @@ import { ApolloClient, NormalizedCacheObject } from "@apollo/client";
 import React, { useState } from "react";
 import { createRekuestClient } from "./client";
 import { RekuestContext } from "./RekuestContext";
-import { RekuestClient, RekuestConfig } from "./types";
+import { RekuestConfig, RekuestState } from "./types";
 
 export type RekuestProps = {
   children: React.ReactNode;
@@ -15,22 +15,28 @@ export const RekuestProvider: React.FC<RekuestProps> = ({
   children,
   clientCreator = createRekuestClient,
 }) => {
-  const [client, setClient] = useState<
-    ApolloClient<NormalizedCacheObject> | undefined
-  >();
-  const [config, setConfig] = useState<RekuestConfig>();
+  const [state, setState] = useState<RekuestState>({
+    config: undefined,
+    client: undefined,
+  });
 
-  const configure = (config: RekuestConfig) => {
-    setConfig(config);
-    setClient(clientCreator(config));
+  const configure = (config?: RekuestConfig) => {
+    if (!config) {
+      setState({
+        config: undefined,
+        client: undefined,
+      });
+      return;
+    }
+
+    setState({ config: config, client: clientCreator(config) });
   };
 
   return (
     <RekuestContext.Provider
       value={{
-        client: client,
         configure: configure,
-        config: config,
+        ...state,
       }}
     >
       {children}

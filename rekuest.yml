@@ -1,11 +1,11 @@
 overwrite: true
-schema: "https://rekuest-sibarita.iins.u-bordeaux.fr/graphql"
+schema: "http://100.91.169.37:8090/graphql"
 documents: "graphql/**/*.graphql"
 generates:
-  src/api/rekuest/fragments.ts:
+  src/rekuest/api/fragments.ts:
     plugins:
       - "fragment-matcher"
-  src/api/rekuest/graphql.ts:
+  src/rekuest/api/graphql.ts:
     plugins:
       - "typescript"
       - "typescript-operations"
@@ -15,6 +15,6 @@ generates:
       reactApolloVersion: 3
       arrayInputCoercion: false
 
-  src/api/rekuest/graphql.schema.json:
+  src/rekuest/api/graphql.schema.json:
     plugins:
       - "introspection"
