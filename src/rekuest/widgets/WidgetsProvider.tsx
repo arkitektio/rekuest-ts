@@ -1,15 +1,12 @@
-import { OutputHTMLAttributes, ReactNode, useEffect, useState } from "react";
+import { useState } from "react";
+import { WidgetRegistry } from "./Registry";
+import { WidgetRegistryContext } from "./WidgetsContext";
 import {
   EffectWidgetProps,
   InputWidgetProps,
-  Port,
   ReturnWidgetProps,
   WidgetRegistryType,
 } from "./types";
-import { WidgetRegistry } from "./Registry";
-import { WidgetRegistryContext } from "./WidgetsContext";
-import { EffectFragment, Group, PortFragment, PortGroup } from "../api/graphql";
-import { notEmpty } from "../utils";
 
 export type WidgetRegistryProviderProps = {
   children: React.ReactNode;

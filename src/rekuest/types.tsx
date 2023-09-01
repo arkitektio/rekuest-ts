@@ -18,7 +18,7 @@ export type RekuestState = {
 };
 
 export type RekuestContextType = RekuestState & {
-  configure: (config: RekuestConfig) => void;
+  configure: (config?: RekuestConfig) => void;
 };
 
 export type RekuestClient = ApolloClient<NormalizedCacheObject>;

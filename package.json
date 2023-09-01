@@ -8,6 +8,7 @@
     "preview": "vite preview",
     "test": "vitest",
     "rekuest": "graphql-codegen --config rekuest.yml",
+    "fluss": "graphql-codegen --config fluss.yaml",
     "p": "yarn publish --access public"
   },
   "files": [
